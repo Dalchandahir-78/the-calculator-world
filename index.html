@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport"content="width=device-width,initial-scale=1.0">
+<title>THE CALCULATOR WORLD</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<button class="theme-btn"
+id="theme-toggle"
+onclick="toggleTheme()">&#127769;Dark mode
+</button>
+<h1>THE CALCULATOR WORLD</h1>
+<div class="container">
+<!-- SCIENTIFIC -->
+<div class="card scientific">
+<h2>Scientific</h2>
+<input id="scidisplay" class="display">
+
+<div class="grid">
+<button onclick="add('7')">7</button><button onclick="add('8')">8</button><button onclick="add('9')">9</button><button onclick="add('/')">/</button>
+<button onclick="add('4')">4</button><button onclick="add('5')">5</button><button onclick="add('6')">6</button><button onclick="add('*')">*</button>
+<button onclick="add('1')">1</button><button onclick="add('2')">2</button><button onclick="add('3')">3</button><button onclick="add('-')">-</button>
+<button onclick="add('0')">0</button><button onclick="add('+')">+</button>
+
+<!-- PARENTHESES -->
+<button onclick="add('(')">(</button>
+<button onclick="add(')')">)</button>
+
+<!-- FUNCTIONS -->
+<button onclick="add('sin(')">sin</button>
+<button onclick="add('cos(')">cos</button>
+<button onclick="add('tan(')">tan</button>
+<button onclick="add('log(')">log</button>
+<button onclick="add('fact(')">n!</button>
+
+<button onclick="calc()">=</button>
+<button onclick="clearAllFields('scidisplay')">Clear</button>
+<button onclick="back('scidisplay')">⌫</button>
+<button onclick="copy('scidisplay')">Copy</button>
+</div>
+</div>
+
+<!-- UNIT -->
+<div class="card unit">
+<h2>Unit</h2>
+<input id="u1" class="display">
+<input id="u2" class="display" readonly>
+
+<button onclick="conv('km_m')">km→m</button>
+<button onclick="conv('m_km')">m→km</button>
+<button onclick="conv('kg_g')">kg→g</button>
+<button onclick="conv('g_kg')">g→kg</button>
+
+<button onclick="clearAllFields('u1','u2')">Clear</button>
+<button onclick="back('u1')">⌫ Input</button>
+<button onclick="back('u2')">⌫ Output</button>
+<button onclick="copy('u2')">Copy</button>
+</div>
+
+<!-- LAND -->
+<div class="card land">
+<h2>Land</h2>
+<input id="l1" class="display">
+<input id="l2" class="display" readonly>
+
+<button onclick="land('acre_km')">acre→km²</button>
+<button onclick="land('km_acre')">km²→acre</button>
+
+<button onclick="clearAllFields('l1','l2')">Clear</button>
+<button onclick="back('l1')">⌫ Input</button>
+<button onclick="back('l2')">⌫ Output</button>
+<button onclick="copy('l2')">Copy</button>
+</div>
+
+<!-- AREA -->
+<div class="card area">
+<h2>Area</h2>
+
+<select id="shape" class="display">
+<option value="">Select</option>
+<option value="rect">Rectangle</option>
+<option value="square">Square</option>
+<option value="circle">Circle</option>
+</select>
+
+<input id="inputA" class="display" placeholder="Length / Side / Radius">
+<input id="inputB" class="display" placeholder="Breadth (rectangle only)">
+
+<select id="unit" class="display">
+<option value="m2">m²</option>
+<option value="cm2">cm²</option>
+<option value="km2">km²</option>
+<option value="acre">acre</option>
+</select>
+
+<button onclick="area()">Calculate</button>
+<button onclick="clearAllFields('shape','inputA','inputB','unit','aout')">Clear</button>
+
+<input id="aout" class="display" readonly>
+
+<!-- BACKSPACE FIXED -->
+<button onclick="back('inputA')">⌫ Length</button>
+<button onclick="back('inputB')">⌫ Breadth</button>
+<button onclick="back('aout')">⌫ Output</button>
+
+<button onclick="copy('aout')">Copy</button>
+</div>
+
+<!-- QUADRATIC -->
+<div class="card quad">
+<h2>Quadratic</h2>
+<input id="qa"><input id="qb"><input id="qc">
+
+<button onclick="quad()">Solve</button>
+<button onclick="clearAllFields('qa','qb','qc','qout')">Clear</button>
+
+<input id="qout" readonly>
+
+<button onclick="back('qa')">⌫ Input</button>
+<button onclick="back('qout')">⌫ Output</button>
+<button onclick="copy('qout')">Copy</button>
+</div>
+
+<!-- TEMP -->
+<div class="card temp">
+<h2>Temperature</h2>
+<input id="t">
+
+<select id="mode">
+<option value="cf">C→F</option>
+<option value="ck">C→K</option>
+<option value="fc">F→C</option>
+<option value="fk">F→K</option>
+<option value="kc">K→C</option>
+<option value="kf">K→F</option>
+</select>
+
+<button onclick="temp()">Convert</button>
+<button onclick="clearAllFields('t','tout')">Clear</button>
+
+<input id="tout" readonly>
+
+<button onclick="back('t')">⌫ Input</button>
+<button onclick="back('tout')">⌫ Output</button>
+<button onclick="copy('tout')">Copy</button>
+</div>
+<div class="card data">
+    <h2>Data</h2>
+    <input id="d1" class="display" placeholder="Input Value">
+    <select id="d-mode" class="display">
+        <option value="mb_kb">MB → KB</option>
+        <option value="gb_mb">GB → MB</option>
+        <option value="tb_gb">TB → GB</option>
+        <option value="kb_mb">KB → MB</option>
+        <option value="mb_gb">MB → GB</option>
+        <option value="gb_kb">GB → KB</option>
+    </select>
+    <button onclick="dataConv()">Convert</button>
+    <input id="dout" class="display" readonly placeholder="Result">
+    <div style="display: flex; gap: 5px; justify-content: center;">
+        <button onclick="clearAllFields('d1','dout')">Clear</button>
+        <button onclick="back('d1')">⌫</button>
+        <button onclick="copy('dout')">Copy</button>
+    </div>
+</div>
+
+<div class="card time">
+    <h2>Time</h2>
+    <input id="tm1" class="display" placeholder="Input Value">
+    <select id="tm-mode" class="display">
+        <option value="h_m">Hours → Min</option>
+        <option value="m_h">Min → Hours</option>
+        <option value="m_s">Min → Sec</option>
+        <option value="h_s">Hours → Sec</option>
+        <option value="s_ms">Sec → MS</option>
+        <option value="ms_s">MS → Sec</option>
+    </select>
+    <button onclick="timeConv()">Convert</button>
+    <input id="tmout" class="display" readonly placeholder="Result">
+    <div style="display: flex; gap: 5px; justify-content: center;">
+        <button onclick="clearAllFields('tm1','tmout')">Clear</button>
+        <button onclick="back('tm1')">⌫</button>
+        <button onclick="copy('tmout')">Copy</button>
+    </div>
+</div>
+
+<div class="history-sidebar card">
+    <h2>History Logs</h2>
+    <button onclick="clearPermanentHistory()" style="background:#dc3545;">Clear All</button>
+    <div id="history-list" style="overflow-y: auto; max-height: 400px; margin-top:10px;"></div>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
